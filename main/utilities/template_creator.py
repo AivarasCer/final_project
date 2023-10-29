@@ -1,2 +1,8 @@
 
-# Reserved for doc template creatore code.
+def save_document():
+    pass
+
+
+def template_composer():
+    pass
+
