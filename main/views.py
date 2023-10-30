@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UploadFileForm
 from .utilities.ocr_reader import ocr_process
+from .utilities.template_creator import template_composer
 
 
 def index(request):
@@ -15,13 +16,20 @@ def index(request):
                     destination.write(chunk)
             file_path = destination.name
 
-            result = ocr_process(file_path, selected_language)
+            ocr_output_path = ocr_process(file_path, selected_language)
+
+            template_path = ''
+            combined_path = template_composer(template_path, ocr_output_path)
+
+            context = {
+                'download_link': combined_path
+            }
 
             return redirect('success_url')
 
-    else:
-        form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
+    # else:
+    #     form = UploadFileForm()
+    return render(request, 'index.html')
 
 
 

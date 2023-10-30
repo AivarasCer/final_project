@@ -47,4 +47,7 @@ def ocr_process(file_path, language):
     else:
         extracted_text = pdf_to_text(file_path, language)
 
-    return extracted_text
+    output_path = 'ocr_output.docx'
+    create_docx(extracted_text, output_path)
+
+    return output_path
