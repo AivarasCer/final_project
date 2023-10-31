@@ -13,9 +13,9 @@ def save_document(template_path, context, doc_name, output_dir):
     return output_path
 
 
-def template_composer(template_path, ocr_output_path, output_dir):
+def template_composer(doc_template_path, ocr_output_path, output_dir):
     """Combine template with OCR output"""
-    main_template = Document(template_path)
+    main_template = Document(doc_template_path)
     composer = Composer(main_template)
 
     ocr_output = Document(ocr_output_path)

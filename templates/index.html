@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}OCR Reader{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1>Welcome to Optical Character Reader!</h1>
+    <p class="lead">Transforming pixels into prose, one document at a time! 🤓</p>
+    <p>From image to text, we've got your docs decoded. Give us an image, and we'll give you its story. OCR magic at its finest!</p>
+    <a href="{% url 'upload' %}" class="btn btn-primary btn-lg">Upload a File</a>
+</div>
+{% endblock %}
