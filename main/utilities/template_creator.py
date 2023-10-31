@@ -2,7 +2,7 @@ import os
 from docx import Document
 from docxcompose.composer import Composer
 
-# context = {'translation_dir': '/OCR successful/'}
+# context = {'translation_dir': '/Translation from Lithuanian/'}
 
 
 def save_document(template_path, context, doc_name, output_dir):

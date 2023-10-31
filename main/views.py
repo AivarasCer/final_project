@@ -17,11 +17,11 @@ def upload(request):
             uploaded_file = request.FILES['file']
             selected_language = form.cleaned_data['language']
 
-            temp_dir = os.path.join('media', 'temp')
+            temp_dir = os.path.join('main', 'media', 'temp')
             os.makedirs(temp_dir, exist_ok=True)
 
             # Save the uploaded file temporarily and get irs path
-            file_path = os.path.join('media', 'temp', uploaded_file.name)
+            file_path = os.path.join('main', 'media', 'temp', uploaded_file.name)
             with open(file_path, 'wb+') as destination:
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
@@ -30,20 +30,16 @@ def upload(request):
             ocr_output = ocr_process(file_path, selected_language)
 
             # Ensure the OCR outputs directory exists
-            ocr_output_dir = os.path.join('media', 'ocr_outputs')
+            ocr_output_dir = os.path.join('main', 'media', 'ocr_outputs')
             os.makedirs(ocr_output_dir, exist_ok=True)
 
-            # Create a DOCX file from OCR output
-            ocr_output_path = os.path.join('media', 'ocr_outputs', 'ocr_output.docx')
-            create_docx(ocr_output, ocr_output_path)
-
             # Combine the OCR output with a template
-            doc_template_path = os.path.join(settings.BASE_DIR, 'static', 'doc_templates', 'template.docx')
-            output_dir = os.path.join(settings.MEDIA_ROOT, 'ocr_outputs')
-            combined_path = template_composer(doc_template_path, ocr_output, output_dir)
+            # doc_template_path = os.path.join(settings.BASE_DIR, 'static', 'doc_templates', 'template.docx')
+            # output_dir = os.path.join(settings.MEDIA_ROOT, 'ocr_outputs')
+            # combined_path = template_composer(doc_template_path, ocr_output, output_dir)
 
             context = {
-                'download_link': combined_path
+                'download_link': ocr_output
             }
 
             return render(request, 'success.html', context)

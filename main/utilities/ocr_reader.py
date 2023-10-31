@@ -1,3 +1,4 @@
+import os
 import io
 import fitz
 import pytesseract as pt
@@ -47,7 +48,5 @@ def ocr_process(file_path, language):
     else:
         extracted_text = pdf_to_text(file_path, language)
 
-    output_path = 'ocr_output.docx'
+    output_path = 'main/media/ocr_outputs/ocr_output.docx'
     create_docx(extracted_text, output_path)
-
-    return output_path
