@@ -7,4 +7,4 @@ class UploadFileForm(forms.Form):
         ('lit', 'Lithuanian')
     ]
     file = forms.FileField()
-    language = forms.ChoiceField(choices=LANGUAGE_CHOICES, initial='eng', widget=forms.RadioSelect)
+    language = forms.ChoiceField(choices=LANGUAGE_CHOICES, initial='eng')
