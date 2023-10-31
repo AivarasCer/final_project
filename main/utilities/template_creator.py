@@ -2,6 +2,8 @@ import os
 from docx import Document
 from docxcompose.composer import Composer
 
+# context = {'translation_dir': '/OCR successful/'}
+
 
 def save_document(template_path, context, doc_name, output_dir):
     """Render and save DOCX template."""
