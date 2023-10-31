@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Download Processed Document</h2>
     <p>Your file has been processed successfully. Click the link below to download:</p>
-    <a href="{{ download_link }}" download>Download Processed Document</a>
+    <a href="{{ download_link }}" download class="btn btn-primary">Download Processed Document</a>
     <br>
     <a href="{% url 'index' %}">Back to Home</a>
 {% endblock %}

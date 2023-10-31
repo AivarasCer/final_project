@@ -4,6 +4,7 @@ import fitz
 import pytesseract as pt
 from PIL import Image
 from docx import Document
+from final_project.settings import BASE_DIR
 
 TESSERACT_CMD_PATH = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 pt.pytesseract.tesseract_cmd = TESSERACT_CMD_PATH
@@ -34,11 +35,11 @@ def image_to_text(image_path, language):
     return pt.image_to_string(image, lang=language)
 
 
-def create_docx(text, output_path):
+def create_docx(text, output_file_path):
     """Create a DOCX file from extracted text."""
     document = Document()
     document.add_paragraph(text)
-    document.save(output_path)
+    document.save(output_file_path)
 
 
 def ocr_process(file_path, language):
@@ -48,5 +49,12 @@ def ocr_process(file_path, language):
     else:
         extracted_text = pdf_to_text(file_path, language)
 
-    output_path = 'main/media/ocr_outputs/ocr_output.docx'
-    create_docx(extracted_text, output_path)
+    # Define the output directory and ensure it exists
+    output_directory = os.path.join(BASE_DIR, 'main', 'media', 'ocr_outputs')
+    os.makedirs(output_directory, exist_ok=True)
+
+    # Define the output file path
+    output_file_path = os.path.join(BASE_DIR, 'main', 'media', 'ocr_outputs', 'processed.docx')
+    create_docx(extracted_text, output_file_path)
+
+    return output_file_path
