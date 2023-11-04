@@ -99,7 +99,7 @@ def register(request):
                     )
                     messages.info(
                         request,
-                        message="User {username} successfully registered!",
+                        message=f"User {username} successfully registered!",
                     )
                     return redirect("login")
         else:
