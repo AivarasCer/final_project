@@ -3,8 +3,8 @@ from .models import MetaData
 
 
 class MetaDataAdmin(admin.ModelAdmin):
-    list_display = ('name', 'user', 'upload_at', 'processing_time', 'chars')
-    search_fields = ('name', 'user')
+    list_display = ('name', 'user', 'upload_at', 'chars', 'file_type')
+    # search_fields = ('name', 'user')
 
 
 admin.site.register(MetaData)
