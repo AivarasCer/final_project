@@ -1,13 +1,11 @@
 import os
-import time
 
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import FileResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from datetime import datetime, timedelta
-
+from datetime import datetime
 from django.views.decorators.csrf import csrf_protect
 
 from final_project.settings import BASE_DIR
