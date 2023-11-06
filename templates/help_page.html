@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}
+Help Page
+{% endblock %}
+
+{% block content %}
+<div class="help-page">
+    <h1>Need Assistance?</h1>
+    <p>If you're looking to improve the quality of your OCR results, please refer to documentation, it has some great tips and tricks. Check out the <a href="https://tesseract-ocr.github.io/tessdoc/ImproveQuality.html" target="_blank">Tesseract OCR quality improvement guide</a> for detailed information.</p>
+    
+    <h2>Got Questions?</h2>
+    <p>We've got answers! If you're stuck or something's not quite clicking:</p>
+    <ul>
+        <li>Don't fret, help is just an email away.</li>
+        <li>Our support team is as quick as a cat – you'll have answers before you can say 'Optical Character Recognition' three times fast.</li>
+        <li>If you're feeling lost in the world of OCR, drop us a line. We'll navigate you through the stormy seas of scanning and digitizing.</li>
+        <li>Remember, there are no silly questions, only silly answers. And we promise to keep those to a minimum.</li>
+    </ul>
+    
+    <h3>Contact Us</h3>
+    <p>If you have any problems, please don't hesitate to reach out at <a href="mailto:aivaras1008@gmail.com">aivaras1008@gmail.com</a>. Our team is always eager to help, and we love hearing from you – even if it's just to share a good joke or a funny cat video.</p>
+</div>
+{% endblock %}
