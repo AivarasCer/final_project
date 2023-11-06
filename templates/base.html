@@ -28,10 +28,10 @@
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'help_page' %}">Help</a>
+                        <a class="nav-link" href="{% url 'account_info' %}">Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}"> Sign out</a>
+                        <a class="nav-link" href="{% url 'help_page' %}">Help</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -45,6 +45,9 @@
                             </svg>
                             {{ user.get_username }}
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"> Sign out</a>
                     </li>
                 {% else %}
                     <li class="nav-item">

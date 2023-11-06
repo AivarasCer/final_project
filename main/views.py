@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from datetime import datetime
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
 
 from final_project.settings import BASE_DIR
 from .forms import UploadFileForm
@@ -106,5 +107,13 @@ def register(request):
             messages.error(request, message="Passwords do not match!")
             return redirect("register")
     return render(request, template_name="registration/register.html")
+
+
+@login_required
+def account_info(request):
+    user_metadata = MetaData.objects.filter(user=request.user)
+
+    context = {'user_metadata': user_metadata}
+    return render(request, 'account_info.html', context)
 
 
