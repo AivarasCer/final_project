@@ -8,6 +8,7 @@ from django.urls import reverse
 from datetime import datetime
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 from final_project.settings import BASE_DIR
 from .forms import UploadFileForm
@@ -111,9 +112,11 @@ def register(request):
 
 @login_required
 def account_info(request):
-    user_metadata = MetaData.objects.filter(user=request.user)
+    user_metadata = Paginator(MetaData.objects.filter(user=request.user).order_by('-upload_at'), 2)
+    page_number = request.GET.get('page')
+    paged_data = user_metadata.get_page(page_number)
 
-    context = {'user_metadata': user_metadata}
+    context = {'user_metadata': paged_data}
     return render(request, 'account_info.html', context)
 
 
