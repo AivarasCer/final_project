@@ -47,6 +47,7 @@ def upload(request):
                 file_type=file_type
             )
             metadata.save()
+            os.remove(file_path)
 
             download_url = reverse('download_file', args=[os.path.basename(ocr_output)])
             context = {
@@ -112,7 +113,7 @@ def register(request):
 
 @login_required
 def account_info(request):
-    user_metadata = Paginator(MetaData.objects.filter(user=request.user).order_by('-upload_at'), 2)
+    user_metadata = Paginator(MetaData.objects.filter(user=request.user).order_by('-upload_at'), 3)
     page_number = request.GET.get('page')
     paged_data = user_metadata.get_page(page_number)
 

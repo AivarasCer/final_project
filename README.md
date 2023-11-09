@@ -1,2 +1,3 @@
-# final_project
-Final PTUA6 project
+# Final PTUA6 project
+
+# Introduction
