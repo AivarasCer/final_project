@@ -8,7 +8,6 @@
           <th scope="col">#</th>
           <th scope="col">Date</th>
           <th scope="col">Name</th>
-          <th scope="col">Characters Processed</th>
           <th scope="col">File Type</th>
         </tr>
       </thead>
@@ -18,7 +17,6 @@
           <th scope="row">{{ forloop.counter }}</th>
           <td>{{ metadata.upload_at }}</td>
           <td>{{ metadata.name }}</td>
-          <td>{{ metadata.chars }}</td>
           <td>{{ metadata.file_type }}</td>
         </tr>
         {% empty %}

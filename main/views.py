@@ -20,6 +20,7 @@ def index(request):
     return render(request, 'index.html')
 
 
+@login_required
 def upload(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -43,7 +44,6 @@ def upload(request):
                 name=file_name,
                 user=request.user,
                 upload_at=datetime.now(),
-                chars=len(ocr_output),
                 file_type=file_type
             )
             metadata.save()
@@ -113,7 +113,7 @@ def register(request):
 
 @login_required
 def account_info(request):
-    user_metadata = Paginator(MetaData.objects.filter(user=request.user).order_by('-upload_at'), 3)
+    user_metadata = Paginator(MetaData.objects.filter(user=request.user).order_by('-upload_at'), 10)
     page_number = request.GET.get('page')
     paged_data = user_metadata.get_page(page_number)
 
