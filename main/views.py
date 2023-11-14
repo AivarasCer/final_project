@@ -28,6 +28,10 @@ def upload(request):
             uploaded_file = request.FILES['file']
             selected_language = form.cleaned_data['language']
 
+            # Ensure that temp directory exists
+            temp_dir = os.path.join('main', 'media', 'temp')
+            os.makedirs(temp_dir, exist_ok=True)
+
             # Save the uploaded file temporarily and get its path
             file_path = os.path.join('main', 'media', 'temp', uploaded_file.name)
             with open(file_path, 'wb+') as destination:
@@ -36,6 +40,10 @@ def upload(request):
 
             # Process the uploaded file using OCR
             ocr_output = ocr_process(file_path, selected_language)
+
+            # Ensure the OCR outputs directory exists
+            ocr_output_dir = os.path.join('main', 'media', 'ocr_outputs')
+            os.makedirs(ocr_output_dir, exist_ok=True)
 
             file_name = os.path.basename(file_path)
             file_type = os.path.splitext(file_name)[1][1:]
