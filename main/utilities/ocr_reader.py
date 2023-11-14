@@ -53,7 +53,7 @@ def ocr_process(file_path, language):
     output_directory = os.path.join(BASE_DIR, 'main', 'media', 'ocr_outputs')
     os.makedirs(output_directory, exist_ok=True)
 
-    # Define the output file path
+    # Define the output file path and create docx
     output_file_path = os.path.join(BASE_DIR, 'main', 'media', 'ocr_outputs', 'processed.docx')
     create_docx(extracted_text, output_file_path)
 
